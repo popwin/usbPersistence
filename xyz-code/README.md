@@ -1,7 +1,5 @@
 
-this is caesarnine work  https://github.com/caesarnine/data-science-docker-vscode-template
-
-and this is a copied one 
+This is a copied work of caesarnine and its original page is https://github.com/caesarnine/data-science-docker-vscode-template
 
 Example template that spins up a self-contained data science environment within a container, that includes:
 

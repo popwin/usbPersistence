@@ -1,6 +1,6 @@
 
 
-this is completely copy from caesarnine whose page is https://github.com/caesarnine/data-science-docker-vscode-template
+This is completely copied one of caesarnine's work and  his page is https://github.com/caesarnine/data-science-docker-vscode-template. Thanks caesarnine
 
 Example template to use Conda + Docker for reproducible, easy to deploy models.
 
