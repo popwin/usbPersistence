@@ -1,0 +1,23 @@
+name: base                                                                   
+channels:                                                                    
+  - defaults                                                                 
+dependencies: 
+  - pip
+  - pip:
+    - Django
+    - jieba
+    - snownlp
+    - pybase64
+    - you-get                                                               
+  - scikit-learn
+  - jupyterlab
+  - setuptools
+  - selenium
+  - BeautifulSoup4
+  - openpyxl
+  - Pillow
+  - requests
+  - matplotlib
+  - pandas
+  - scipy
+  - sqlite

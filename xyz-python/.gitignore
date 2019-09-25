@@ -1,0 +1,5 @@
+.env*
+!.env_dev
+# 主要用于，万一要提交到github时，不要将本地环境变量提交到github上
+# 忽略所有.env文件，即不提交.env文件
+# 但是.env_dev除外

@@ -1,0 +1,38 @@
+# 基于node10.15镜像，安装vscode编程环境，主要用于js开发
+# 需要重新建立镜像时，指定dockerfile位置，直接docker-compose build即可
+# 当载入镜像后，注释掉dockerfile，添加image的id，直接docker-compose up即可
+# localhost:8443 即可访问vscode进行编程
+# 运行时code直接挂载到container中，随时保存文件
+# data用于存储vscode的插件信息，安装后的插件全部存在data中，下次运行时，挂载上去，安装的插件继续可以使用
+# 插件安装需外网
+version: "3.7"
+
+services:
+  xyzjs:       
+    build: 
+      # 给定dockfile是要在你本地的引擎中建立一个镜像
+      # 当已经导入了一个镜像以后，可以用image id 直接开启
+      #dockerfile: ./docker/Dockerfile
+      context: ./
+    
+    image: xyz/node:1.3
+    #image: b401d47a90c0
+    #env_file:
+      #- .env_dev
+    ports:
+      - "4000:4000"
+    #command: 
+      #/usr/local/bin/docker-entrypoint.sh
+      #jupyter lab --no-browser --ip=0.0.0.0 --allow-root --NotebookApp.token='local_dev'
+      
+    volumes:
+      - ./data:/data
+      - ./code:/code
+      #- ./notebooks:/notebooks
+  
+  xyzdb:
+    image: mysql:latest
+    ports:
+      - "3306:3306"
+
+

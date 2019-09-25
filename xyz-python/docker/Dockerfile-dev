@@ -1,0 +1,23 @@
+
+# base image 在这里并没有add目录到镜像，而是运行时挂载
+# 镜像名字在compose.yml中指定
+FROM continuumio/miniconda3
+
+# load in the environment.yml file
+# 想要安装的python包都写入这里
+ADD ./docker/environment.yml /
+
+# create the environmnt
+# 更新conda为最新版本，并添加environment中的包
+                                
+# RUN conda config --add channels https://mirrors.sjtug.sjtu.edu.cn/anaconda/pkgs/main/
+# RUN conda config --set show_channel_urls yes
+
+RUN conda update -n base conda -y && conda env update
+
+#用pip写在了environment.yml中了，因此这里就可以不用额外写了
+#RUN pip install Django
+#RUN pip install jieba
+#RUN pip install snownlp
+#RUN pip install pybase64
+#RUN pip install you-get

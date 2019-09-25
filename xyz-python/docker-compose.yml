@@ -1,0 +1,29 @@
+# 镜像中只包括一个miniconda，程序不打包进镜像中
+# 而是将当前目录中的code data notebook 挂载到镜像中
+# 每次容器存储py文件或者data都直接保存在本地code data中
+# 当用于production时，再将data code notebook打包进镜像中直接运行
+# env_dev中存放容器和脚本都可用的全局变量，相当于系统环境变量
+# version 指的是 compose file的 要和具体使用的docker版本相对应
+version: "3.7"
+
+services:
+  miniconda:       
+    build: 
+      # 给定dockfile是要在你本地的引擎中建立一个镜像
+      # 当已经导入了一个镜像以后，可以用image id 直接开启
+      #dockerfile: ./docker/Dockerfile-dev
+      context: ./
+    
+    #image: xyz/python:1.1
+    image: 9e66c803e112
+    env_file:
+      - .env_dev
+    ports:
+      - "7000:8888"
+    command: 
+      jupyter lab --no-browser --ip=0.0.0.0 --allow-root --NotebookApp.token='local_dev'
+    volumes:
+      - ./data:/data
+      - ./code:/code
+      - ./notebooks:/notebooks
+

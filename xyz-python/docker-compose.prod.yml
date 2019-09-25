@@ -1,0 +1,23 @@
+version: "1.0"
+# 用于将写好的的全部程序打包进镜像中即code data notebook中的文件全部在dockfile中打包进镜像了
+# 因此这里在运行镜像时，就没有必要再挂载data code notebook了
+# 修改command 作为启动容器时的运行命令 
+services:
+  xyz/python:       
+    build: 
+      dockerfile: ./docker/Dockerfile-prod
+      context: ./
+    image: xyz/python # alternatively replace with your docker registry/dockerhub info (i.e. youruser/example_project_python:latest for dockerhub)
+    
+    # uncomment the below two lines if you plan on running via docker-compose in production
+    #env_file: 
+    #  - .env_prod
+
+    command: 
+      python /code/example.py
+
+    # note - once in production I usually pull from an API or some other location, if you
+    # still expect to pull data from the file system then uncomment the below two lines and
+    # replace /real_data_location with the correct path
+    #volumes:
+    #  - /real_data_location:/data
