@@ -1,4 +1,4 @@
-# 镜像中只包括一个miniconda，程序不打包进镜像中
+# 镜像中只包括一个miniconda（在dockerfile-dev中定义），编写的程序不打包进镜像中
 # 而是将当前目录中的code data notebook 挂载到镜像中
 # 每次容器存储py文件或者data都直接保存在本地code data中
 # 当用于production时，再将data code notebook打包进镜像中直接运行
