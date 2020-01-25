@@ -1,2 +1,2 @@
 # usbPersistence
-install linux to usbdrive and make it a real linux to go
+install Linux to usbdrive and make it a real **Linux to go**
